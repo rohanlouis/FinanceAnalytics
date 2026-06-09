@@ -1,5 +1,8 @@
 # FinanceAnalytics
 
+See [sample_data/USERSTORIES.md](sample_data/USERSTORIES.md) for the user stories that guide this project.
+
+
 An 8-week engineering project focused on building a robust, localized Python web application to upload, clean, categorize, and analyze personal bank transactions. Built entirely with a Python-centric backend stack using FastAPI, SQLite, and pandas—omitting heavy JavaScript frameworks to focus strictly on clean data handling, server-side performance, and automated testing.
 
 🎯 Project Goal
