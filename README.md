@@ -41,3 +41,38 @@ Rule-Based Engine: Automated script patterns to auto-tag merchants (e.g., matchi
 Analytics Dashboard: Visual representation of spending habits using key KPIs and client-side charts.
 
 CSV Data Export: A feature to clean your data inside the app and re-export it back out as a unified flat file.
+
+Database Schema Notes
+Transactions table
+
+The app uses a single SQLite table named transactions to store all manual entries.
+
+Fields
+id — primary key, auto-incremented integer
+date — transaction date, stored as text in YYYY-MM-DD format
+description — short text describing the transaction
+amount — numeric value for the transaction amount
+category — text label such as Food, Travel, Bills, etc.
+source_file_name — original file name if the transaction came from an import
+created_at — timestamp showing when the record was added to the database
+Design notes
+SQLite was chosen because it is lightweight and easy to use for a small app.
+The table is designed to support creating, reading, updating, and deleting transactions.
+created_at is automatically saved when a record is added.
+source_file_name can be left blank for manually entered transactions.
+The amount field should support decimal values so cents are preserved.
+Example schema
+CREATE TABLE transactions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT NOT NULL,
+    description TEXT NOT NULL,
+    amount REAL NOT NULL,
+    category TEXT NOT NULL,
+    source_file_name TEXT,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+Page behavior
+List page: displays all transactions from the database
+Add page: creates a new transaction
+Edit page: updates an existing transaction
+Delete page: removes a transaction from the database
